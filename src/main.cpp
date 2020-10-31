@@ -7,10 +7,8 @@ WiFiServer server(80);
 
 
 
-
-
 void setup() {
-Serial.begin(9500);
+Serial.begin(9600);
 Serial.print("Verbinden mit...");
 Serial.println(ssid);
 WiFi.begin(ssid, password);
@@ -24,10 +22,11 @@ server.begin();
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+
   WiFiClient client = server.available();  
   client.println("<!DOCTYPE html><html>");
-  client.println("<head><title>mau</title></head>");
-  client.println("<body><h1>Hallo</h1><p>......</p><p>------</p></body>");
+  client.println("<head><title>Sensordaten</title></head>");
+  client.println("<body><h1>DHT 11</h1><p>Temperatur</p><p>Luftfeuchtigkeit</p><p>Verwendet wurden ein DHT11 und ein Esp32<br>Ziel ist es die vom DHT11 gemessene Temperatur<br>auf einer Website anzuzeigen.<br></p></body>");
   client.println("</html>");
+
 }
